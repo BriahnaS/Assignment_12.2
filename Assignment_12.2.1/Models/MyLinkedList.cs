@@ -41,29 +41,5 @@ namespace Assignment_12._2._1.Models
             Console.WriteLine();
         }
 
-        public void Remove(int val)
-        {
-            if (Head == null)
-            {
-                return;
-            }
-
-            if (Head.Data == val)
-            {
-                Head = Head.Next;
-                return;
-            }
-            var current = Head;
-
-            while (current.Next != null && current.Next.Data != val)
-            {
-                current = current.Next;
-            }
-
-            if (current.Next != null)
-            {
-                current.Next = current.Next.Next;
-            }
-        }
     }
 }

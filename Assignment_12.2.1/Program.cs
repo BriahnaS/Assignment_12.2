@@ -3,26 +3,26 @@ using Assignment_12._2._1.Models;
 using System.ComponentModel.DataAnnotations;
 
 MyLinkedList list = new();
-//list.AddLast(1);
-//list.AddLast(2);
-//list.AddLast(6);
-//list.AddLast(3);
-//list.AddLast(4);
-//list.AddLast(5);
-//list.AddLast(6);
+list.AddLast(1);
+list.AddLast(2);
+list.AddLast(6);
+list.AddLast(3);
+list.AddLast(4);
+list.AddLast(5);
+list.AddLast(6);
 
-//int val = 6;
+int val = 6;
 
 // Test 2 
 //int val = 1;
 
 // Test 3
-list.AddLast(7);
-list.AddLast(7);
-list.AddLast(7);
-list.AddLast(7);
+//list.AddLast(7);
+//list.AddLast(7);
+//list.AddLast(7);
+//list.AddLast(7);
 
-int val = 7;
+//int val = 7;
 
 RemoveValue(ref list, val).PrintList();
 
@@ -31,18 +31,23 @@ RemoveValue(ref list, val).PrintList();
 
 static MyLinkedList RemoveValue(ref MyLinkedList list, int val)
 {
-    var current = list.Head;
-    while (current != null)
+    while (list.Head != null && list.Head.Data == val)
     {
-        if (current.Data == val)
+        list.Head = list.Head.Next;
+    }
+
+    var current = list.Head;
+    while (current != null && current.Next != null)
+    {
+        if (current.Next.Data == val)
         {
-            list.Remove(current.Data);
-            current = current.Next;
+            current.Next = current.Next.Next;
         }
         else
         {
             current = current.Next;
         }
     }
+
     return list;
 }
